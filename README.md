@@ -31,7 +31,7 @@ Add employee information in using div and form elements below the heading
 - [x] Give the table a list of headings as follows: First Name, Last Name, ID, Title, Annual Salary, Remove Employee?
 
 ### Part 4 - Total Monthly Salary
-- [ ] Below the HTML table, add a monthly-salary div with the text `Total Monthly Salary: ${monthlySalary}`
+- [x] Below the employee-data div, add a monthly-salary div with the text `Total Monthly Salary: ${monthlySalary}`
 
 ### Part 5 - JavaScript
 
