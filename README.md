@@ -8,14 +8,14 @@ Your project description goes here. What problem did you solve? How did you solv
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
 
-## Part 1
+## Part 1 - Page Heading
 
 Add a heading and title to the page
 
 - [ ] Add a heading and title to the DOM.
 - [ ] Center the text and give the text a margin of 20px(?) on top and bottom
 
-## Part 2
+## Part 2 - HTML Form
 
 Add employee information in using div and form elements below the heading
 
@@ -26,3 +26,8 @@ Add employee information in using div and form elements below the heading
 - [ ] Add relevant placeholder text to each text input box
 - [ ] Add a 'Submit' button to submit the form info and clear the input text
 
+## Part 3 - Employee Data Table
+
+- [ ] Create an employee-data div entitled 'Employee Data'
+- [ ] Nest an HTML table within the employee-data div
+- [ ] Give the table a list of headings as follows: First Name, Last Name, ID, Title, Annual Salary, Remove Employee?
