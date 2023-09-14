@@ -10,7 +10,7 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 
 Add a heading to the page
 
-- [ ] Add a heading with a descriptive title to the DOM :tada:
+- [x] Add a heading with a descriptive title to the DOM :tada:
 - [ ] Center the text and give the text a margin of 20px(?) on top and bottom :tada:
 
 ### Part 2 - HTML Form
