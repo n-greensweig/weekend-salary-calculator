@@ -26,9 +26,9 @@ Add employee information in using div and form elements below the heading
 
 ### Part 3 - Employee Data Table
 
-- [ ] Create an employee-data div entitled 'Employee Data'
-- [ ] Nest an HTML table within the employee-data div
-- [ ] Give the table a list of headings as follows: First Name, Last Name, ID, Title, Annual Salary, Remove Employee?
+- [x] Below the form, create an employee-data div entitled 'Employee Data'
+- [x] Nest an HTML table within the employee-data div
+- [x] Give the table a list of headings as follows: First Name, Last Name, ID, Title, Annual Salary, Remove Employee?
 
 ### Part 4 - Total Monthly Salary
 - [ ] Below the HTML table, add a monthly-salary div with the text `Total Monthly Salary: ${monthlySalary}`

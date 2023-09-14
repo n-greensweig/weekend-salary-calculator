@@ -10,7 +10,7 @@
 <body>
     <header>Salary Calculator</header>
     <div id="new-employee-info">
-        <p>Submit New Employee Information</p>
+        <h2>Submit New Employee Information</h2>
         <form onsubmit="submitInfo()">
         <input type="text" id="first-name" placeholder="First Name" />
         <input type="text" id="last-name" placeholder="Last Name" />
@@ -20,6 +20,18 @@
 
         <button type="submit" id="submit-button">Submit</button>
         </form>
+    </div>
+    <div id="employee-data">
+        <h2>Employee Data</h2>
+        <table id="employee-data-table">
+            <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Employee ID Number</th>
+                <th>Job Title</th>
+                <th>Annual Salary</th>
+            </thead>
+        </table>
     </div>
 </body>
 </html>
