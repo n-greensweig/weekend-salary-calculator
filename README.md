@@ -31,3 +31,13 @@ Add employee information in using div and form elements below the heading
 - [ ] Create an employee-data div entitled 'Employee Data'
 - [ ] Nest an HTML table within the employee-data div
 - [ ] Give the table a list of headings as follows: First Name, Last Name, ID, Title, Annual Salary, Remove Employee?
+
+## Part 4 - Total Monthly Salary
+- [ ] Below the HTML table, add a monthly-salary div with the text `Total Monthly Salary: ${monthlySalary}`
+
+## Part 5 - JavaScript
+
+- [ ] Declare global variables for each input value from the HTML form
+- [ ] Create a submitInfo() function to append table rows to the HTML table when the form is submitted, including a 'Delete' button for each employee that fires an onClick="deleteEmployee(e)" function
+- [ ] Create a deleteEmployee(e) function that prompts the user to ask if they are sure that they want to delete firstName's data, then deletes the parent element(?) of the delete button that the user clicked
+- [ ] Within the 
