@@ -42,3 +42,12 @@ Add employee information in using div and form elements below the heading
 - [ ] Create a deleteEmployee(e) function that prompts the user to ask if they are sure they want to delete firstName's data, then deletes the parent element(?) of the delete button that the user clicked
 - [ ] Query select HTML table data in the "annual-salary" class, and run a for loop(?) to add each of these numbers up and divide by 12, appending to the monthly-salary div when this calculation is complete
 - [ ] Edit the deleteEmployee(e) function to remove an employee's monthly salary from the monthly-salary total when an employee is deleted from the list
+
+## Part 6 - CSS & Styling
+
+- [ ] Add a background color to the heading of the page
+- [ ] Add only a bottom border to the input fields
+- [ ] Create alternating row colors of white and lightgrey within the HTML table
+- [ ] Remove interior borders from table rows while keeping full borders on the table heading
+- [ ] Add a HTML favicon and title element to the page
+- [ ] Add a CSS rule to give the total-monthly div a red background color when the total monthly salary exceeds $20k
