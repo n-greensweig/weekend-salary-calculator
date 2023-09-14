@@ -25,21 +25,30 @@ function submitInfo(e) {
     document.querySelector(`#id-number`).value = '';
     document.querySelector(`#job-title`).value = '';
     document.querySelector(`#annual-salary`).value = '';
-    sumSalaries(document.querySelector(`.annual-salary-data`).innerHTML);
+    sumSalaries();
+    setSumHTML();
 }
 
 const removeEmployee = e => e.target.parentElement.parentElement.remove();
 
-let salaries = [];
 let table = document.querySelector(`#employee-data-table`);
 let rows = table.rows;
-// console.log(table.rows[0].cells[4].innerHTML);
-function sumSalaries(salary) {
-    let salarySum = salaries.reduce((acc, currVal) => acc + currVal, 0);
+let salaries = [];
+
+function sumSalaries() {
+    let salary;
     for (let i = 1; i < rows.length; i++) {
         let row = rows[i];
-        salaries.push(Number(row.cells[4].innerHTML));
+        salary = row.cells[4].innerHTML;
     }
-    console.log(salaries);
-    console.log(salarySum);
+    salaries.push(Number(salary));
+    let monthlySum = Math.ceil(salaries.reduce((acc, curr) => acc + curr, 0) / 12);
+    return monthlySum;
 }
+
+const setSumHTML = () => {
+    document.querySelector(`#monthly-salary-div`).innerHTML = `
+    <p>Total monthly salary: ${sumSalaries()}</p>
+    `;
+};
+
