@@ -6,7 +6,7 @@ Your project description goes here. What problem did you solve? How did you solv
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
 
-## Part 1 - Page Heading
+### Part 1 - Page Heading
 
 Add a heading and title to the page
 
