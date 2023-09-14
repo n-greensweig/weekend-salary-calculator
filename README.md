@@ -10,19 +10,19 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 
 Add a heading to the page
 
-- [x] Add a heading with a descriptive title to the DOM :tada:
-- [ ] Center the text and give the text a margin of 20px(?) on top and bottom :tada:
+- [x] Add a heading with a descriptive title to the DOM
+- [x] Center the text and give the text a margin of 20px(?) on top and bottom
 
 ### Part 2 - HTML Form
 
 Add employee information in using div and form elements below the heading
 
-- [ ] Create an new-employee-info div
-- [ ] Add 'Add Employee' or 'Submit New Employee Information' text within the new-employee-info div
-- [ ] Create an HTML form within the new-employee-info div with onSubmit functionality
-- [ ] Add five input fields, with type="text" and appropriate margin between them, for the user to add the employee's first name, last name, ID number, job title, and annual salary.
-- [ ] Add relevant placeholder text to each text input box
-- [ ] Add a 'Submit' button to submit the form info and clear the input text
+- [x] Create an new-employee-info div
+- [x] Add 'Add Employee' or 'Submit New Employee Information' text within the new-employee-info div
+- [x] Create an HTML form within the new-employee-info div with onSubmit functionality
+- [x] Add five input fields, with type="text" and appropriate margin between them, for the user to add the employee's first name, last name, ID number, job title, and annual salary.
+- [x] Add relevant placeholder text to each text input box
+- [x] Add a 'Submit' button to submit the form info and clear the input text
 
 ### Part 3 - Employee Data Table
 
