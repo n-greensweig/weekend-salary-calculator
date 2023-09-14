@@ -16,3 +16,13 @@ Add a heading and title to the page
 - [ ] Center the text and give the text a margin of 20px(?) on top and bottom
 
 ## Part 2
+
+Add employee information in using div and form elements below the heading
+
+- [ ] Create an new-employee-info div
+- [ ] Add 'Add Employee' or 'Submit New Employee Information' text within the new-employee-info div
+- [ ] Create an HTML form within the new-employee-info div with onSubmit functionality
+- [ ] Add five input fields, with type="text" and appropriate margin between them, for the user to add the employee's first name, last name, ID number, job title, and annual salary.
+- [ ] Add relevant placeholder text to each text input box
+- [ ] Add a 'Submit' button to submit the form info and clear the input text
+
