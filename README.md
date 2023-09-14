@@ -39,7 +39,7 @@ Add employee information in using div and form elements below the heading
 - [x] Create a submitInfo(e) function to append table rows (with class names matching hyphenated versions of their headings) to the HTML table when the form is submitted, including a 'Delete' button for each employee that fires an onClick="removeEmployee(e)" function
 - [x] Create a removeEmployee(e) function that prompts the user to ask if they are sure they want to delete firstName's data, then deletes the parent element(?) of the delete button that the user clicked
 - [x] Query select HTML table data in the "annual-salary-data" class, and run a for loop(?) to add each of these numbers up and divide by 12, appending to the monthly-salary div when this calculation is complete
-- [ ] Edit the removeEmployee(e) function to remove an employee's monthly salary from the monthly-salary total when an employee is deleted from the list
+- [x] Edit the removeEmployee(e) function to remove an employee's monthly salary from the monthly-salary total when an employee is deleted from the list
 
 ### Part 6 - CSS & Styling
 
