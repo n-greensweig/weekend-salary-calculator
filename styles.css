@@ -1,9 +1,12 @@
+body {
+    background-color: #3fc380ab;
+}
+
 h1 {
     text-align: center;
     margin: 20px auto;
-    border: 1px dashed white;
-    width: 100%;
-    height: auto;
+    padding: 10px;
+    border-bottom: 2px dashed white;
     color: white;
 }
 
@@ -12,26 +15,43 @@ h2 {
     color: white;
 }
 
-body {
-    background-color: #299861;
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+form > * {
+    height: 20px;
+    margin: 10px;
 }
 
 input {
-    border: 0px;
-    border-bottom: 1px dashed black;
-    margin: 10px;
-    height: 20px;
+    border: none;
+    border-bottom: 1px dashed #1e824cff;
 }
 
 input::placeholder {
     text-align: center;
-    ;
+    color: #1e824c55;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
 }
 
 #submit-button {
-    color: #299861;
+    color: #1e824c;
     background-color: white;
-    border-color: white;
+    border: 2px double #1e824cff;
+}
+
+#submit-button:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #1e824c;
+    border: 2px double white;
 }
 
 table {
@@ -40,30 +60,18 @@ table {
     padding: 10px;
 }
 
-.test {
-    border-color: black;
-}
-
 th {
     padding: 20px;
-    color: #299861;
-    border-radius: 5%;
+    color: #1e824c;
+    border-radius: 4%;
     margin: 0px;
     border-color: white;
     background: white;
+    text-decoration: underline;
 }
 
-
-form {
-    display: flex;
-    justify-content: center;
-}
-
-#monthly-salary-div {
-    text-align: right;
-    padding-right: 130px;
-    color: white;
-    margin: 0 auto;
+tr {
+    color: #1e824c;
 }
 
 tr:nth-child(odd) {
@@ -74,14 +82,30 @@ tr:nth-child(even) {
     background-color: white;
 }
 
-.remove-button {
-    text-align: center;
-    background-color: inherit;
-    border: 2px double black;
-    border-radius: 5%;
-}
-
 td {
     text-align: center;
     border: none;
+    border-radius: 4%;
+}
+
+.remove-button {
+    text-align: center;
+    background-color: inherit;
+    border: 2px double #1e824c;
+    border-radius: 5%;
+    color: #1e824c;
+}
+
+.remove-button:hover {
+    cursor: pointer;
+    background-color: #1e824c;
+    border: 2px double #1e824c;
+    color: white
+}
+
+#monthly-salary-div {
+    text-align: right;
+    padding-right: 130px;
+    color: white;
+    margin: 0 auto;
 }

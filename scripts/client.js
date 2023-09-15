@@ -21,13 +21,7 @@ let salaries = [];
 
 function submitInfo(e) {
     e.preventDefault();
-    employees.push({
-        firstName: document.querySelector(`#first-name`).value,
-        lastName: document.querySelector(`#last-name`).value,
-        idNumber: document.querySelector(`#id-number`).value,
-        jobTitle: document.querySelector(`#job-title`).value,
-        annualSalary: document.querySelector(`#annual-salary`).value
-    });
+
     let newEmployee = {
         firstName: document.querySelector(`#first-name`).value,
         lastName: document.querySelector(`#last-name`).value,
@@ -35,7 +29,9 @@ function submitInfo(e) {
         jobTitle: document.querySelector(`#job-title`).value,
         annualSalary: document.querySelector(`#annual-salary`).value
     }
-    console.log(employees);
+
+    validateResponses(newEmployee.firstName);
+
     tableBody.innerHTML += `
     <tr>
         <td class="first-name-data">${newEmployee.firstName}</td>
@@ -111,7 +107,14 @@ function sumSalaries() {
 function redBackground() {
     if (monthlySum > 20000) {
         monthlySalaryDiv.innerHTML = `
-    <p style="background-color: red">Total monthly salary: ${monthlySum}</p>
+    <p style="background-color: #d0342c; display: inline-block; padding: 5px;">Over budget! Total monthly salary: ${monthlySum}</p>
     `;
+    }
+}
+
+function validateResponses(fNameInput/*, lNameInput, idInput, titleInput, salaryInput*/) {
+    console.log(fNameInput);
+    if (typeof fNameInput !== 'string') {
+        alert('Please submit a first name with only alphabetical characters');
     }
 }

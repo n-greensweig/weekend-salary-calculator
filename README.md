@@ -48,3 +48,15 @@ Add employee information in using div and form elements below the heading
 - [x] Create alternating row colors of white and lightgrey within the HTML table
 - [x] Add a HTML favicon and title element to the page
 - [x] Add a CSS rule to give the total-monthly div a red background color when the total monthly salary exceeds $20k
+
+
+### Part 7 - Ad Hoc Improvements
+
+- [x] Resize the submit button to match the input boxes
+- [x] Restyle the remove employee buttons
+- [x] Clean up the red background color for when monthly salary exceeds $20k
+- [ ] Add validation with RegEx and alerts for each input field and to confirm removals
+- [ ] Try different font-families
+- [ ] Format numbers as currency with dollar signs and commas
+- [ ] Adjust for responsive design
+- [ ] Incorporate the employees object
