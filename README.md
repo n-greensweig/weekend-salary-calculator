@@ -43,8 +43,8 @@ Add employee information in using div and form elements below the heading
 
 ### Part 6 - CSS & Styling
 
-- [ ] Add a background color to the heading of the page
-- [ ] Add only a bottom border to the input fields
+- [x] Add a background color to the heading of the page
+- [x] Add only a bottom border to the input fields
 - [ ] Create alternating row colors of white and lightgrey within the HTML table
 - [ ] Remove interior borders from table rows while keeping full borders on the table heading
 - [ ] Add a HTML favicon and title element to the page

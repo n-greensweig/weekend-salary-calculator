@@ -1,5 +1,37 @@
-header {
+h1 {
     text-align: center;
     margin: 20px auto;
-    border-bottom: 1px black solid; /* delete after adding background color*/
+    border: 1px dashed white;
+    background-color: #D63D38;
+    width: 100%;
+    height: auto;
+    color: white;
+}
+
+body {
+    background-color: #118c4f;
+}
+
+input {
+    border: 0px;
+    border-bottom: 1px dashed black;
+    margin: 10px;
+}
+
+table {
+    background-color: white;
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+#submit-button {
+    width: fit-content;
+    height: auto;
 }
