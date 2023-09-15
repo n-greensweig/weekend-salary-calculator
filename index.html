@@ -8,6 +8,8 @@
     <script src="scripts/client.js" defer></script>
     <script src="scripts/employee-data.js" defer></script>
     <script src="scripts/global-variables.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="bear-icon.jpeg">
+    <title>Salary Calculator</title>
 </head>
 <body>
         <h1>Salary Calculator</h1>
@@ -19,7 +21,6 @@
         <input type="text" id="id-number" placeholder="ID Number" />
         <input type="text" id="job-title" placeholder="Job Title" />
         <input type="text" id="annual-salary" placeholder="Annual Salary" />
-
         <button type="submit" id="submit-button">Submit</button>
         </form>
     </div>
@@ -34,6 +35,8 @@
                 <th>Annual Salary</th>
                 <th>Remove Employee?</th>
             </thead>
+            <tbody class="table-body">
+            </tbody>
         </table>
     </div>
     <div id="monthly-salary-div">

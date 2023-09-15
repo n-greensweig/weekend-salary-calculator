@@ -2,14 +2,14 @@ console.log('script sourced');
 
 const salaryTable = document.querySelector(`#employee-data-table`);
 const monthlySalaryDiv = document.querySelector(`#monthly-salary-div`);
-const table = document.querySelector(`#employee-data-table`);
+const tableBody = document.querySelector(`.table-body`);
 const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 2
 });
 
-const rows = table.rows;
+const rows = salaryTable.rows;
 let monthlySum = 0;
 let salaries = [];
 
@@ -36,7 +36,7 @@ function submitInfo(e) {
         annualSalary: document.querySelector(`#annual-salary`).value
     }
     console.log(employees);
-    salaryTable.innerHTML += `
+    tableBody.innerHTML += `
     <tr>
         <td class="first-name-data">${newEmployee.firstName}</td>
         <td class="last-name-data">${newEmployee.lastName}</td>
@@ -46,6 +46,7 @@ function submitInfo(e) {
         <td><button class="remove-button" onclick="removeEmployee(event)">Remove employee</button></td>
     </tr>
     `
+    console.log(tableBody.innerHTML);
     document.querySelector(`#first-name`).value = '';
     document.querySelector(`#last-name`).value = '';
     document.querySelector(`#id-number`).value = '';
@@ -77,6 +78,8 @@ function removeEmployee(e) {
     monthlySalaryDiv.innerHTML = `
     <p>Total monthly salary: ${monthlySum}</p>
     `;
+
+    redBackground();
 };
 
 
@@ -96,8 +99,19 @@ function sumSalaries() {
     salaries.push(salary);
     monthlySum = Number((salaries.reduce((acc, curr) => acc + curr, 0) / 12).toFixed(2));
     console.log(monthlySum);
-    monthlySum = formatter.format(monthlySum);
+    // monthlySum = formatter.format(monthlySum);
     monthlySalaryDiv.innerHTML = `
     <p>Total monthly salary: ${monthlySum}</p>
     `;
+
+    redBackground();
+}
+
+
+function redBackground() {
+    if (monthlySum > 20000) {
+        monthlySalaryDiv.innerHTML = `
+    <p style="background-color: red">Total monthly salary: ${monthlySum}</p>
+    `;
+    }
 }

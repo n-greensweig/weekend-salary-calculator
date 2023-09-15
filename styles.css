@@ -2,36 +2,86 @@ h1 {
     text-align: center;
     margin: 20px auto;
     border: 1px dashed white;
-    background-color: #D63D38;
     width: 100%;
     height: auto;
     color: white;
 }
 
+h2 {
+    text-align: center;
+    color: white;
+}
+
 body {
-    background-color: #118c4f;
+    background-color: #299861;
 }
 
 input {
     border: 0px;
     border-bottom: 1px dashed black;
     margin: 10px;
+    height: 20px;
+}
+
+input::placeholder {
+    text-align: center;
+    ;
+}
+
+#submit-button {
+    color: #299861;
+    background-color: white;
+    border-color: white;
 }
 
 table {
-    background-color: white;
+    margin: 0 auto;
+    border: 2px double white;
+    padding: 10px;
 }
 
-h2 {
-    text-align: center;
+.test {
+    border-color: black;
 }
+
+th {
+    padding: 20px;
+    color: #299861;
+    border-radius: 5%;
+    margin: 0px;
+    border-color: white;
+    background: white;
+}
+
 
 form {
     display: flex;
     justify-content: center;
 }
 
-#submit-button {
-    width: fit-content;
-    height: auto;
+#monthly-salary-div {
+    text-align: right;
+    padding-right: 130px;
+    color: white;
+    margin: 0 auto;
+}
+
+tr:nth-child(odd) {
+    background-color: lightgrey;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+.remove-button {
+    text-align: center;
+    background-color: inherit;
+    border: 2px double black;
+    border-radius: 5%;
+}
+
+td {
+    text-align: center;
+    border: none;
 }

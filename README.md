@@ -45,7 +45,6 @@ Add employee information in using div and form elements below the heading
 
 - [x] Add a background color to the heading of the page
 - [x] Add only a bottom border to the input fields
-- [ ] Create alternating row colors of white and lightgrey within the HTML table
-- [ ] Remove interior borders from table rows while keeping full borders on the table heading
-- [ ] Add a HTML favicon and title element to the page
-- [ ] Add a CSS rule to give the total-monthly div a red background color when the total monthly salary exceeds $20k
+- [x] Create alternating row colors of white and lightgrey within the HTML table
+- [x] Add a HTML favicon and title element to the page
+- [x] Add a CSS rule to give the total-monthly div a red background color when the total monthly salary exceeds $20k
