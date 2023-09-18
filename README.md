@@ -56,9 +56,9 @@ Add employee information in using div and form elements below the heading
 - [x] Restyle the remove employee buttons
 - [x] Clean up the red background color for when monthly salary exceeds $20k
 - [x] Incorporate an employees object
-- [ ] Add validation with RegEx and alerts for each input field and to confirm removals
+- [ ] Add alerts for each input field to confirm removals and RegEx validation
 - [x] Clean up salaries.splice() in removeEmployee function
 - [ ] Format numbers as currency with dollar signs and commas
 - [ ] Adjust for responsive design
 - [ ] Try different font-families
-- [ ] Comment code
+- [x] Comment code
