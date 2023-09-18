@@ -142,6 +142,10 @@ function sumSalaries() {
     // Sum the numbers in the 'salaries' array and round to two decimal points
     monthlySum = Number((salaries.reduce((acc, curr) => acc + curr, 0) / 12).toFixed(2));
 
+    if (isNaN(monthlySum)) {
+        console.log('monthly sum is NaN');
+    }
+
     // monthlySum = formatter.format(monthlySum);
    
     // Set the total monthly salary in the DOM
