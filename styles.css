@@ -1,5 +1,6 @@
 body {
     background-color: #3fc380ab;
+    font-family: Georgia, 'Helvetica Neue', 'Times New Roman';
 }
 
 h1 {
@@ -45,6 +46,7 @@ input::-webkit-inner-spin-button {
     color: #1e824c;
     background-color: white;
     border: 2px double #1e824cff;
+    font-family: Georgia, 'Helvetica Neue', 'Times New Roman';
 }
 
 #submit-button:hover {
@@ -94,6 +96,7 @@ td {
     border: 2px double #1e824c;
     border-radius: 5%;
     color: #1e824c;
+    font-family: Georgia, 'Helvetica Neue', 'Times New Roman';
 }
 
 .remove-button:hover {

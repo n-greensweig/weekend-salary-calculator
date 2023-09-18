@@ -60,5 +60,5 @@ Add employee information in using div and form elements below the heading
 - [x] Clean up salaries.splice() in removeEmployee function
 - [ ] Format numbers as currency with dollar signs and commas
 - [ ] Adjust for responsive design
-- [ ] Try different font-families
+- [x] Try different font-families
 - [x] Comment code

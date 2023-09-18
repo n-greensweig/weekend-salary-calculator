@@ -59,12 +59,12 @@ function submitInfo(e) {
     // Add form info to the table on the DOM
     tableBody.innerHTML += `
     <tr>
-    <td class="first-name-data">${newEmployee.firstName}</td>
-    <td class="last-name-data">${newEmployee.lastName}</td>
-    <td class="id-number-data">${newEmployee.idNumber}</td>
-    <td class="job-title-data">${newEmployee.jobTitle}</td>
-    <td class="annual-salary-data">${newEmployee.annualSalary}</td>
-    <td><button class="remove-button" onclick="removeEmployee(event)">Remove employee</button></td>
+        <td class="first-name-data">${newEmployee.firstName}</td>
+        <td class="last-name-data">${newEmployee.lastName}</td>
+        <td class="id-number-data">${newEmployee.idNumber}</td>
+        <td class="job-title-data">${newEmployee.jobTitle}</td>
+        <td class="annual-salary-data">${newEmployee.annualSalary}</td>
+        <td><button class="remove-button" onclick="removeEmployee(event)">Remove employee</button></td>
     </tr>
     `
     // Reset input field values to empty
