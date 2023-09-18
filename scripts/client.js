@@ -33,7 +33,6 @@ function submitInfo(e) {
     }
 
     employees.push(newEmployee);
-    console.log(employees);
 
     tableBody.innerHTML += `
     <tr>
@@ -67,6 +66,9 @@ function removeEmployee(e) {
 
     salaries.splice(idNums.indexOf(e.target.parentElement.parentElement.cells[2].innerHTML), 1);
 
+    employees.splice(idNums.indexOf(e.target.parentElement.parentElement.cells[2].innerHTML), 1);
+    console.log(employees);
+
     monthlySum -= salaryToRemove;
     e.target.parentElement.parentElement.remove();
     monthlySalaryDiv.innerHTML = `
@@ -97,17 +99,20 @@ function sumSalaries() {
     monthlySum = Number((salaries.reduce((acc, curr) => acc + curr, 0) / 12).toFixed(2));
     console.log(monthlySum);
     // monthlySum = formatter.format(monthlySum);
-    monthlySalaryDiv.innerHTML = `
+    redBackground();
+    return monthlySalaryDiv.innerHTML = `
     <p>Total monthly salary: ${monthlySum}</p>
     `;
 
-    redBackground();
 }
+
+
+
 
 
 function redBackground() {
     if (monthlySum > 20000) {
-        monthlySalaryDiv.innerHTML = `
+        return monthlySalaryDiv.innerHTML = `
     <p style="background-color: #d0342c; display: inline-block; padding: 5px;">Over budget! Total monthly salary: ${monthlySum}</p>
     `;
     }
