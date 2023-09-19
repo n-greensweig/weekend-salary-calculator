@@ -26,11 +26,8 @@ const formatter = new Intl.NumberFormat('en-US', {
 /**
  * Global variables used in sumSalaries function
  */
-let monthlySum = 0;
-let salaries = [];
 let idNums = [];
-
-
+let salaries = [];
 
 
 
@@ -63,8 +60,8 @@ function submitInfo(e) {
         <td class="last-name-data">${newEmployee.lastName}</td>
         <td class="id-number-data">${newEmployee.idNumber}</td>
         <td class="job-title-data">${newEmployee.jobTitle}</td>
-        <td class="annual-salary-data">${newEmployee.annualSalary}</td>
-        <td><button class="remove-button" onclick="removeEmployee(event)">Remove employee</button></td>
+        <td class="annual-salary-data">${formatter.format(newEmployee.annualSalary)}</td>
+        <td><button class="remove-button" onclick="removeEmployee(event, monthlySum = 0)">Remove employee</button></td>
     </tr>
     `
     // Reset input field values to empty
@@ -74,11 +71,67 @@ function submitInfo(e) {
     document.querySelector(`#job-title`).value = '';
     document.querySelector(`#annual-salary`).value = '';
 
-    // Should we always return something?
     // Update the monthly salary counter on the DOM
-    return sumSalaries();
+    sumSalaries();
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * @returns Adds the sum of the salaries in the 'salaries' array and returns 
+ * a red background of the sum if the sum exceeds $20k.
+*/
+function sumSalaries() {
+    let salary;
+    let idNum;
+
+    
+    // Set 'salary' and 'idNum' to the respective lists of values in the table
+    for (let i = 1; i < rows.length; i++) {
+        let row = rows[i];
+        salary = Number(row.cells[4].innerHTML.slice(1).split(',').join(''));
+        idNum = Number(row.cells[2].innerHTML);
+    }
+    
+    // Push each employee's salary and id numbers into the respective 'salaries' and 'idNums' arrays
+    salaries.push(salary);
+    idNums.push(idNum);
+    
+    // Sum the numbers in the 'salaries' array and round to two decimal points
+    sum = Number((salaries.reduce((acc, curr) => acc + curr, 0) / 12).toFixed(2));
+    console.log(sum);
+    
+    // Format the monthly sum into USD
+    sum = formatter.format(sum);
+    console.log(sum);
+    
+    // Set the total monthly salary in the DOM
+    monthlySalaryDiv.innerHTML = `
+    <p>Total monthly salary: ${sum}</p>
+    `;
+    
+    sum = Number(Number(sum.slice(1).split(',').join('')).toFixed(2));
+    
+    // Set the background color of the salary counter to red if the monthly salary exceeds $20k
+    redBackground(sum);
+    
+}
+
+
+
 
 
 
@@ -92,26 +145,36 @@ function submitInfo(e) {
  * @returns Removes a selected employee from the table and returns 
  * a red background of the sum if the sum exceeds $20k.
  */
-function removeEmployee(e) {
+function removeEmployee(e, sum) {
+
+    // Reset monthlySum to type number
+    // monthlySum = Number(Number(monthlySum.slice(1).split(',').join('')).toFixed(2));
+
+    console.log(monthlySum);
+
+    // Get clicked on row
+    let clickedRow = e.target.parentElement.parentElement;
 
     // Coerce the salary figure in the same row as the clicked 'Remove employee' button into a number
-    let salaryToRemove = Number((Number(e.target.parentElement.parentElement.cells[4].innerHTML) / 12).toFixed(2));
+    let salaryToRemove = Number((Number(clickedRow.cells[4].innerHTML.slice(1).split(',').join('')) / 12).toFixed(2));
 
     // Remove the selected salary and employee from the respective 'salaries' and employees arrays
-    salaries.splice(idNums.indexOf(e.target.parentElement.parentElement.cells[2].innerHTML), 1);
-    employees.splice(idNums.indexOf(e.target.parentElement.parentElement.cells[2].innerHTML), 1);
+    salaries.splice(idNums.indexOf(clickedRow.cells[2].innerHTML), 1);
+    employees.splice(idNums.indexOf(clickedRow.cells[2].innerHTML), 1);
 
     // Subtract the selected salary from the salary counter on the DOM and set the counter to the new appropriate figure
-    monthlySum -= salaryToRemove;
-    e.target.parentElement.parentElement.remove();
+    console.log(monthlySum);
+    sum -= salaryToRemove;
+    console.log(monthlySum);
+    clickedRow.remove();
     monthlySalaryDiv.innerHTML = `
-    <p>Total monthly salary: ${monthlySum}</p>
+    <p>Total monthly salary: ${formatter.format(sum)}</p>
     `;
 
-    // Should we always return something?
     // Set the background color of the salary counter to red if the monthly salary exceeds $20k
-    return redBackground();
+    redBackground(sum);
 
+    // monthlySum = formatter.format(monthlySum);
 };
 
 
@@ -120,61 +183,28 @@ function removeEmployee(e) {
 
 
 
-/**
- * @returns Adds the sum of the salaries in the 'salaries' array and returns 
- * a red background of the sum if the sum exceeds $20k.
- */
-function sumSalaries() {
-    let salary;
-    let idNum;
 
-    // Set 'salary' and 'idNum' to the respective lists of values in the table
-    for (let i = 1; i < rows.length; i++) {
-        let row = rows[i];
-        salary = Number(row.cells[4].innerHTML);
-        idNum = Number(row.cells[2].innerHTML);
-    }
 
-    // Push each employee's salary and id numbers into the respective 'salaries' and 'idNums' arrays
-    salaries.push(salary);
-    idNums.push(idNum);
-
-    // Sum the numbers in the 'salaries' array and round to two decimal points
-    monthlySum = Number((salaries.reduce((acc, curr) => acc + curr, 0) / 12).toFixed(2));
-
-    if (isNaN(monthlySum)) {
-        console.log('monthly sum is NaN');
-    }
-
-    // monthlySum = formatter.format(monthlySum);
-   
-    // Set the total monthly salary in the DOM
-    monthlySalaryDiv.innerHTML = `
-    <p>Total monthly salary: ${monthlySum}</p>
-    `;
-
-    // Should we always return something?
-    // Set the background color of the salary counter to red if the monthly salary exceeds $20k
-    return redBackground();
-
-}
 
 
 
 
 /**
  * @returns Helper function that returns a red background of the sum if the monthly sum exceeds $20k.
- */
-function redBackground() {
-
+*/
+function redBackground(sum) {
+    
+    // monthlySum = Number(Number(monthlySum.slice(1).split(',').join('')).toFixed(2));
+    
     // Set the background color of the salary counter to red if the monthly salary exceeds $20k
-    if (monthlySum > 20000) {
-        // Should we always return something?
-        return monthlySalaryDiv.innerHTML = `
-    <p style="background-color: #d0342c; display: inline-block; padding: 5px;">Over budget! Total monthly salary: ${monthlySum}</p>
-    `;
-
+    if (sum > 20000) {
+        
+        monthlySalaryDiv.innerHTML = `
+        <p style="background-color: #d0342c; display: inline-block; padding: 5px;">Over budget! Total monthly salary: ${formatter.format(sum)}</p>
+        `;
+        
     }
+
 }
 
 
