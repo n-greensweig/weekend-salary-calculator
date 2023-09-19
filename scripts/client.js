@@ -28,8 +28,9 @@ const formatter = new Intl.NumberFormat('en-US', {
  */
 let idNums = [];
 let salaries = [];
-
-
+let employees = [];
+let monthlySum = 0;
+// let monthlySum = Number(Number(salaries.reduce((acc, currVal) => { acc + currVal }, 0)).toFixed(2));
 
 /**
  * @param {Event} e Takes in form submission as a parameter
@@ -39,7 +40,6 @@ let salaries = [];
 function submitInfo(e) {
 
     e.preventDefault();
-
 
     let newEmployee = {
         firstName: firstNameVar.value,
@@ -61,9 +61,11 @@ function submitInfo(e) {
         <td class="id-number-data">${newEmployee.idNumber}</td>
         <td class="job-title-data">${newEmployee.jobTitle}</td>
         <td class="annual-salary-data">${formatter.format(newEmployee.annualSalary)}</td>
-        <td><button class="remove-button" onclick="removeEmployee(event, monthlySum = 0)">Remove employee</button></td>
+        <td><button class="remove-button" onclick="removeEmployee(event)">Remove employee</button></td>
     </tr>
     `
+    salaries.push(Number(newEmployee.annualSalary));
+
     // Reset input field values to empty
     document.querySelector(`#first-name`).value = '';
     document.querySelector(`#last-name`).value = '';
@@ -95,39 +97,43 @@ function submitInfo(e) {
  * a red background of the sum if the sum exceeds $20k.
 */
 function sumSalaries() {
+
     let salary;
     let idNum;
 
-    
+
     // Set 'salary' and 'idNum' to the respective lists of values in the table
     for (let i = 1; i < rows.length; i++) {
         let row = rows[i];
-        salary = Number(row.cells[4].innerHTML.slice(1).split(',').join(''));
+        // salary = Number(row.cells[4].innerHTML.slice(1).split(',').join(''));
         idNum = Number(row.cells[2].innerHTML);
     }
-    
+
     // Push each employee's salary and id numbers into the respective 'salaries' and 'idNums' arrays
-    salaries.push(salary);
+    // salaries.push(salary);
     idNums.push(idNum);
-    
+
     // Sum the numbers in the 'salaries' array and round to two decimal points
-    sum = Number((salaries.reduce((acc, curr) => acc + curr, 0) / 12).toFixed(2));
-    console.log(sum);
-    
+    monthlySum = Number((salaries.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / 12).toFixed(2));
+    // monthlySum = Number((salaries.reduce((acc, curr) => acc, 0) / 12).toFixed(2));
+    console.log(monthlySum);
+
     // Format the monthly sum into USD
-    sum = formatter.format(sum);
-    console.log(sum);
-    
+    monthlySum = formatter.format(monthlySum);
+    console.log(monthlySum);
+
     // Set the total monthly salary in the DOM
     monthlySalaryDiv.innerHTML = `
-    <p>Total monthly salary: ${sum}</p>
+    <p>Total monthly salary: ${monthlySum}</p>
     `;
-    
-    sum = Number(Number(sum.slice(1).split(',').join('')).toFixed(2));
-    
+
+    console.log(monthlySum);
+    monthlySum = Number(Number(monthlySum.slice(1).split(',').join('')).toFixed(2));
+    console.log(monthlySum);
+
     // Set the background color of the salary counter to red if the monthly salary exceeds $20k
-    redBackground(sum);
-    
+    redBackground();
+
 }
 
 
@@ -145,34 +151,31 @@ function sumSalaries() {
  * @returns Removes a selected employee from the table and returns 
  * a red background of the sum if the sum exceeds $20k.
  */
-function removeEmployee(e, sum) {
+function removeEmployee(e) {
 
     // Reset monthlySum to type number
     // monthlySum = Number(Number(monthlySum.slice(1).split(',').join('')).toFixed(2));
-
-    console.log(monthlySum);
 
     // Get clicked on row
     let clickedRow = e.target.parentElement.parentElement;
 
     // Coerce the salary figure in the same row as the clicked 'Remove employee' button into a number
     let salaryToRemove = Number((Number(clickedRow.cells[4].innerHTML.slice(1).split(',').join('')) / 12).toFixed(2));
+    console.log(salaryToRemove);
 
     // Remove the selected salary and employee from the respective 'salaries' and employees arrays
     salaries.splice(idNums.indexOf(clickedRow.cells[2].innerHTML), 1);
     employees.splice(idNums.indexOf(clickedRow.cells[2].innerHTML), 1);
 
     // Subtract the selected salary from the salary counter on the DOM and set the counter to the new appropriate figure
-    console.log(monthlySum);
-    sum -= salaryToRemove;
-    console.log(monthlySum);
+    monthlySum -= salaryToRemove;
     clickedRow.remove();
     monthlySalaryDiv.innerHTML = `
-    <p>Total monthly salary: ${formatter.format(sum)}</p>
+    <p>Total monthly salary: ${formatter.format(monthlySum)}</p>
     `;
 
     // Set the background color of the salary counter to red if the monthly salary exceeds $20k
-    redBackground(sum);
+    redBackground();
 
     // monthlySum = formatter.format(monthlySum);
 };
@@ -192,17 +195,17 @@ function removeEmployee(e, sum) {
 /**
  * @returns Helper function that returns a red background of the sum if the monthly sum exceeds $20k.
 */
-function redBackground(sum) {
-    
+function redBackground() {
+
     // monthlySum = Number(Number(monthlySum.slice(1).split(',').join('')).toFixed(2));
-    
+
     // Set the background color of the salary counter to red if the monthly salary exceeds $20k
-    if (sum > 20000) {
-        
+    if (monthlySum > 20000) {
+
         monthlySalaryDiv.innerHTML = `
-        <p style="background-color: #d0342c; display: inline-block; padding: 5px;">Over budget! Total monthly salary: ${formatter.format(sum)}</p>
+        <p style="background-color: #d0342c; display: inline-block; padding: 5px;">Over budget! Total monthly salary: ${formatter.format(monthlySum)}</p>
         `;
-        
+
     }
 
 }
