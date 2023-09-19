@@ -153,9 +153,6 @@ function sumSalaries() {
  */
 function removeEmployee(e) {
 
-    // Reset monthlySum to type number
-    // monthlySum = Number(Number(monthlySum.slice(1).split(',').join('')).toFixed(2));
-
     // Get clicked on row
     let clickedRow = e.target.parentElement.parentElement;
 
@@ -169,7 +166,13 @@ function removeEmployee(e) {
 
     // Subtract the selected salary from the salary counter on the DOM and set the counter to the new appropriate figure
     monthlySum -= salaryToRemove;
-    clickedRow.remove();
+
+    // If statement to account for js math that sometimes results in monthlySum equaling -.01 or .01 when should be 0
+    if (-1 < monthlySum && monthlySum < 1) {
+        monthlySum = 0;
+    }
+
+        clickedRow.remove();
     monthlySalaryDiv.innerHTML = `
     <p>Total monthly salary: ${formatter.format(monthlySum)}</p>
     `;
@@ -177,7 +180,6 @@ function removeEmployee(e) {
     // Set the background color of the salary counter to red if the monthly salary exceeds $20k
     redBackground();
 
-    // monthlySum = formatter.format(monthlySum);
 };
 
 
