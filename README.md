@@ -59,6 +59,6 @@ Add employee information in using div and form elements below the heading
 - [ ] Add alerts for each input field to confirm removals and RegEx validation
 - [x] Clean up salaries.splice() in removeEmployee function
 - [x] Format numbers as currency with dollar signs and commas
-- [ ] Adjust for responsive design
+- [x] Adjust for responsive design
 - [x] Try different font-families
 - [x] Comment code

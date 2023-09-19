@@ -56,14 +56,19 @@ input::-webkit-inner-spin-button {
     border: 2px double white;
 }
 
+#employee-data {
+    margin: 20px;
+}
+
 table {
     margin: 0 auto;
-    border: 2px double white;
+    border: 2px double white !important;
     padding: 10px;
+    width: 100%;
 }
 
 th {
-    padding: 20px;
+    padding: 10px;
     color: #1e824c;
     border-radius: 4%;
     margin: 0px;
@@ -88,6 +93,7 @@ td {
     text-align: center;
     border: none;
     border-radius: 4%;
+    padding: 10px;
 }
 
 .remove-button {
@@ -108,7 +114,6 @@ td {
 
 #monthly-salary-div {
     text-align: right;
-    padding-right: 7%;
     color: white;
-    margin: 0 auto;
+    margin: inherit;
 }
