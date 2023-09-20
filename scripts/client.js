@@ -42,6 +42,7 @@ function submitInfo(e) {
 
     e.preventDefault();
 
+    // Add values
     let newEmployee = {
         firstName: firstNameVar.value,
         lastName: lastNameVar.value,
@@ -50,7 +51,7 @@ function submitInfo(e) {
         annualSalary: annualSalaryVar.value
     }
 
-    // Push newEmployee object into employees array in case there is a future use case for doing so
+    // Push newEmployee object into employees array in case there is future utility for having an array of employees
     employees.push(newEmployee);
 
     // Add form info to the table on the DOM
@@ -64,6 +65,8 @@ function submitInfo(e) {
         <td><button class="remove-button" onclick="removeEmployee(event)">Remove employee</button></td>
     </tr>
     `
+
+    // Push the submitted salary and ID numbers into the respective arrays
     salaries.push(Number(newEmployee.annualSalary));
     idNums.push(Number(newEmployee.idNumber));
 
@@ -110,6 +113,7 @@ function sumSalaries() {
     <p>Total monthly salary: ${monthlySum}</p>
     `;
 
+    // Format the monthly sum back into a number
     monthlySum = Number(Number(monthlySum.slice(1).split(',').join('')).toFixed(2));
 
     // Set the background color of the salary counter to red if the monthly salary exceeds $20k
@@ -204,6 +208,7 @@ function redBackground() {
 
 
 function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salaryInput) {
+   
     let alphaRegEx = /^[a-zA-Z' ]+$/;
     let numericRegEx = /^[0-9.]+$/;
     let titleRegEx = /^[a-zA-Z0-9.' ]+$/;
