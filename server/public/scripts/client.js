@@ -148,29 +148,39 @@ function removeEmployee(e) {
     // Get clicked on row
     let clickedRow = e.target.parentElement.parentElement;
 
-    // Coerce the salary figure in the same row as the clicked 'Remove employee' button into a number
-    let salaryToRemove = Number((Number(clickedRow.cells[4].innerHTML.slice(1).split(',').join('')) / 12).toFixed(2));
+    // Prompt the user to confirm removal
+    let confirmRemove = window.confirm('Are you sure you want to remove this employee?');
 
-    // Remove the selected salary and employee from the respective 'salaries' and employees arrays
-    salaries.splice(idNums.indexOf(clickedRow.cells[2].innerHTML), 1);
-    employees.splice(idNums.indexOf(clickedRow.cells[2].innerHTML), 1);
+    // Remove the employee if the user confirms they want to do so
+    if (confirmRemove) {
 
-    // Subtract the selected salary from the salary counter on the DOM and set the counter to the new appropriate figure
-    monthlySum -= salaryToRemove;
+        // Coerce the salary figure in the same row as the clicked 'Remove employee' button into a number
+        let salaryToRemove = Number((Number(clickedRow.cells[4].innerHTML.slice(1).split(',').join('')) / 12).toFixed(2));
 
-    // If statement to account for js math that sometimes results in monthlySum equaling -.01 or .01 when should be 0
-    if (-1 < monthlySum && monthlySum < 1) {
-        monthlySum = 0;
-    }
+        // Remove the selected salary, id number, and employee from the respective arrays
+        salaries.splice(idNums.indexOf(clickedRow.cells[2].innerHTML), 1);
+        idNums.splice(idNums.indexOf(clickedRow.cells[2].innerHTML), 1);
+        employees.splice(idNums.indexOf(clickedRow.cells[2].innerHTML), 1);
 
-    // Remove clicked row and append the new formatted monthly sum to the DOM
-    clickedRow.remove();
-    monthlySalaryDiv.innerHTML = `
+        // Subtract the selected salary from the salary counter on the DOM and set the counter to the new appropriate figure
+        monthlySum -= salaryToRemove;
+
+        // If statement to account for js math that sometimes results in monthlySum equaling -.01 or .01 when should be 0
+        if (-1 < monthlySum && monthlySum < 1) {
+            monthlySum = 0;
+        }
+
+        // Remove clicked row and append the new formatted monthly sum to the DOM
+        clickedRow.remove();
+        monthlySalaryDiv.innerHTML = `
     <p>Total monthly salary: ${formatter.format(monthlySum)}</p>
     `;
 
-    // Set the background color of the salary counter to red if the monthly salary exceeds $20k
-    redBackground();
+        // Set the background color of the salary counter to red if the monthly salary exceeds $20k
+        redBackground();
+    } else {
+        // Do nothing
+    }
 
 };
 
@@ -213,15 +223,28 @@ function redBackground() {
 
 
 
-
+/**
+ * 
+ * @param {String} fNameInput First name input from form submission
+ * @param {String} lNameInput Last name input from form submission
+ * @param {String} idNumInput ID number input from form submission
+ * @param {String} titleInput Title input from form submission
+ * @param {String} salaryInput Salary input from form submission
+ * @returns Returns a passing or failing test depending on user's input
+ */
 function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salaryInput) {
 
+    // Used to ensure first and last inputs only include alpha, apostrophe, or space characters
     let alphaRegEx = /^[a-zA-Z' ]+$/;
-    let idNumRegEx = /^[0-9.]{7}$/;
-    let titleRegEx = /^[a-zA-Z0-9.' ]+$/;
-    let numericRegEx = /^[0-9.]+$/;
 
-    console.log(idNums.indexOf(Number(idNumInput)));
+    // Used to ensure ID number input includes exactly 7 numeric characters
+    let idNumRegEx = /^[0-9]{7}$/;
+
+    // Used to ensure title input includes only alphanumeric characters or periods/commas/apostrophes/spaces
+    let titleRegEx = /^[a-zA-Z0-9.', ]+$/;
+
+    // Used to ensure salary input only includes numeric or period characters
+    let numericRegEx = /^[0-9.]+$/;
 
     if (!alphaRegEx.test(fNameInput)) {
         alert(`Please enter only alpha characters in the first name box.`);
@@ -242,7 +265,7 @@ function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salar
         alert(`Please only enter numeric characters in the salary box.`);
         return false;
     } else {
-        return true;
+        return true; // return true if user's input meets all input criteria
     }
 
 }

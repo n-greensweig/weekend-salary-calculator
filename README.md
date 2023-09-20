@@ -62,5 +62,4 @@ Add employee information in using div and form elements below the heading
 - [x] Adjust for responsive design
 - [x] Try different font-families
 - [x] Comment code
-- [ ] Account for NaN instances (going negative)
-- [ ] Give the user an option to confirm they want to delete an employee before doing so
+- [x] Give the user an option to confirm they want to delete an employee before doing so
