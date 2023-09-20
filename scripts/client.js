@@ -30,7 +30,8 @@ let idNums = [];
 let salaries = [];
 let employees = [];
 let monthlySum = 0;
-// let monthlySum = Number(Number(salaries.reduce((acc, currVal) => { acc + currVal }, 0)).toFixed(2));
+
+
 
 /**
  * @param {Event} e Takes in form submission as a parameter
@@ -48,7 +49,6 @@ function submitInfo(e) {
         jobTitle: jobTitleVar.value,
         annualSalary: annualSalaryVar.value
     }
-    // validateResponses(newEmployee.firstName, newEmployee.lastName, newEmployee.idNumber, newEmployee.jobTitle, newEmployee.annualSalary);
 
     // Push newEmployee object into employees array in case there is a future use case for doing so
     employees.push(newEmployee);
@@ -65,6 +65,7 @@ function submitInfo(e) {
     </tr>
     `
     salaries.push(Number(newEmployee.annualSalary));
+    idNums.push(Number(newEmployee.idNumber));
 
     // Reset input field values to empty
     document.querySelector(`#first-name`).value = '';
@@ -98,38 +99,18 @@ function submitInfo(e) {
 */
 function sumSalaries() {
 
-    let salary;
-    let idNum;
-
-
-    // Set 'salary' and 'idNum' to the respective lists of values in the table
-    for (let i = 1; i < rows.length; i++) {
-        let row = rows[i];
-        // salary = Number(row.cells[4].innerHTML.slice(1).split(',').join(''));
-        idNum = Number(row.cells[2].innerHTML);
-    }
-
-    // Push each employee's salary and id numbers into the respective 'salaries' and 'idNums' arrays
-    // salaries.push(salary);
-    idNums.push(idNum);
-
     // Sum the numbers in the 'salaries' array and round to two decimal points
     monthlySum = Number((salaries.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / 12).toFixed(2));
-    // monthlySum = Number((salaries.reduce((acc, curr) => acc, 0) / 12).toFixed(2));
-    console.log(monthlySum);
 
     // Format the monthly sum into USD
     monthlySum = formatter.format(monthlySum);
-    console.log(monthlySum);
 
     // Set the total monthly salary in the DOM
     monthlySalaryDiv.innerHTML = `
     <p>Total monthly salary: ${monthlySum}</p>
     `;
 
-    console.log(monthlySum);
     monthlySum = Number(Number(monthlySum.slice(1).split(',').join('')).toFixed(2));
-    console.log(monthlySum);
 
     // Set the background color of the salary counter to red if the monthly salary exceeds $20k
     redBackground();
@@ -158,7 +139,6 @@ function removeEmployee(e) {
 
     // Coerce the salary figure in the same row as the clicked 'Remove employee' button into a number
     let salaryToRemove = Number((Number(clickedRow.cells[4].innerHTML.slice(1).split(',').join('')) / 12).toFixed(2));
-    console.log(salaryToRemove);
 
     // Remove the selected salary and employee from the respective 'salaries' and employees arrays
     salaries.splice(idNums.indexOf(clickedRow.cells[2].innerHTML), 1);
@@ -172,7 +152,8 @@ function removeEmployee(e) {
         monthlySum = 0;
     }
 
-        clickedRow.remove();
+    // Remove clicked row and append the new formatted monthly sum to the DOM
+    clickedRow.remove();
     monthlySalaryDiv.innerHTML = `
     <p>Total monthly salary: ${formatter.format(monthlySum)}</p>
     `;
@@ -199,7 +180,6 @@ function removeEmployee(e) {
 */
 function redBackground() {
 
-    // monthlySum = Number(Number(monthlySum.slice(1).split(',').join('')).toFixed(2));
 
     // Set the background color of the salary counter to red if the monthly salary exceeds $20k
     if (monthlySum > 20000) {
@@ -214,10 +194,19 @@ function redBackground() {
 
 
 
-// fNameInput, lNameInput, idNumInput, titleInput, salaryInput
+
+
+
+
+
+
+
+
+
 function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salaryInput) {
-    let alphaRegEx = /^[a-zA-Z0-9 ]+$/;
-    let numericRegEx = /^[0-9]+$/;
+    let alphaRegEx = /^[a-zA-Z' ]+$/;
+    let numericRegEx = /^[0-9.]+$/;
+    let titleRegEx = /^[a-zA-Z0-9.' ]+$/;
 
     if (!alphaRegEx.test(fNameInput)) {
         return alert(`Please enter only alpha characters in the first name box.`);
@@ -225,7 +214,7 @@ function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salar
         return alert(`Please enter only alpha characters in the last name box.`);
     } else if (!numericRegEx.test(idNumInput)) {
         return alert(`Please enter a 7-digit id number in the ID Number box.`);
-    } else if (!alphaRegEx.test(titleInput)) {
+    } else if (!titleRegEx.test(titleInput)) {
         return alert(`Please enter only alpha characters in the job title box.`);
     } else if (!numericRegEx.test(salaryInput)) {
         return alert(`Please only enter numeric characters in the salary box.`);
@@ -235,4 +224,4 @@ function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salar
 
 }
 
-// validateResponses('Noah', 'Greensweig', 1234567, 'Noah Greensweig', '1234564');
+validateResponses(`Noah`, 'Greensweig', 1234567, 'Noah Greensweig', '1234564');
