@@ -63,3 +63,4 @@ Add employee information in using div and form elements below the heading
 - [x] Try different font-families
 - [x] Comment code
 - [x] Give the user an option to confirm they want to delete an employee before doing so
+- [ ] Consider adding a 'Try giving a raise' button for the boss to see if they have the budget to give an employee a raise

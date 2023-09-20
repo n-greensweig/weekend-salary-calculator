@@ -147,9 +147,10 @@ function removeEmployee(e) {
 
     // Get clicked on row
     let clickedRow = e.target.parentElement.parentElement;
+    let nameToRemove = `${clickedRow.cells[0].innerHTML} ${clickedRow.cells[1].innerHTML}`;
 
     // Prompt the user to confirm removal
-    let confirmRemove = window.confirm('Are you sure you want to remove this employee?');
+    let confirmRemove = window.confirm(`Are you sure you want to remove ${nameToRemove} from the list of employees?`);
 
     // Remove the employee if the user confirms they want to do so
     if (confirmRemove) {
@@ -240,8 +241,8 @@ function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salar
     // Used to ensure ID number input includes exactly 7 numeric characters
     let idNumRegEx = /^[0-9]{7}$/;
 
-    // Used to ensure title input includes only alphanumeric characters or periods/commas/apostrophes/spaces
-    let titleRegEx = /^[a-zA-Z0-9.', ]+$/;
+    // Used to ensure title input includes only appropriate characters
+    let titleRegEx = /^[a-zA-Z0-9.',&-/ ]+$/;
 
     // Used to ensure salary input only includes numeric or period characters
     let numericRegEx = /^[0-9.]+$/;
