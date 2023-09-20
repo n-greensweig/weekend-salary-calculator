@@ -51,34 +51,41 @@ function submitInfo(e) {
         annualSalary: annualSalaryVar.value
     }
 
-    // Push newEmployee object into employees array in case there is future utility for having an array of employees
-    employees.push(newEmployee);
+    if (validateResponses(newEmployee.firstName, newEmployee.lastName, newEmployee.idNumber, newEmployee.jobTitle, newEmployee.annualSalary) === 'Run function') {
 
-    // Add form info to the table on the DOM
-    tableBody.innerHTML += `
-    <tr>
+        
+        // Push newEmployee object into employees array in case there is future utility for having an array of employees
+        employees.push(newEmployee);
+        
+        // Add form info to the table on the DOM
+        tableBody.innerHTML += `
+        <tr>
         <td class="first-name-data">${newEmployee.firstName}</td>
         <td class="last-name-data">${newEmployee.lastName}</td>
         <td class="id-number-data">${newEmployee.idNumber}</td>
         <td class="job-title-data">${newEmployee.jobTitle}</td>
         <td class="annual-salary-data">${formatter.format(newEmployee.annualSalary)}</td>
         <td><button class="remove-button" onclick="removeEmployee(event)">Remove employee</button></td>
-    </tr>
-    `
-
-    // Push the submitted salary and ID numbers into the respective arrays
-    salaries.push(Number(newEmployee.annualSalary));
-    idNums.push(Number(newEmployee.idNumber));
-
-    // Reset input field values to empty
-    document.querySelector(`#first-name`).value = '';
-    document.querySelector(`#last-name`).value = '';
-    document.querySelector(`#id-number`).value = '';
-    document.querySelector(`#job-title`).value = '';
-    document.querySelector(`#annual-salary`).value = '';
-
-    // Update the monthly salary counter on the DOM
-    sumSalaries();
+        </tr>
+        `
+        
+        // Push the submitted salary and ID numbers into the respective arrays
+        salaries.push(Number(newEmployee.annualSalary));
+        idNums.push(Number(newEmployee.idNumber));
+        
+        // Reset input field values to empty
+        document.querySelector(`#first-name`).value = '';
+        document.querySelector(`#last-name`).value = '';
+        document.querySelector(`#id-number`).value = '';
+        document.querySelector(`#job-title`).value = '';
+        document.querySelector(`#annual-salary`).value = '';
+        
+        // Update the monthly salary counter on the DOM
+        sumSalaries();
+    
+    } else {
+        validateResponses(newEmployee.firstName, newEmployee.lastName, newEmployee.idNumber, newEmployee.jobTitle, newEmployee.annualSalary)
+    }
 
 }
 
@@ -214,7 +221,8 @@ function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salar
     let titleRegEx = /^[a-zA-Z0-9.' ]+$/;
 
     if (!alphaRegEx.test(fNameInput)) {
-        return alert(`Please enter only alpha characters in the first name box.`);
+        alert(`Please enter only alpha characters in the first name box.`);
+        return false;
     } else if (!alphaRegEx.test(lNameInput)) {
         return alert(`Please enter only alpha characters in the last name box.`);
     } else if (!numericRegEx.test(idNumInput)) {
@@ -224,7 +232,7 @@ function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salar
     } else if (!numericRegEx.test(salaryInput)) {
         return alert(`Please only enter numeric characters in the salary box.`);
     } else {
-        // Do nothing
+        return 'Run function';
     }
 
 }
