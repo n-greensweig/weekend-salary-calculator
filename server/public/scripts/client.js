@@ -51,12 +51,14 @@ function submitInfo(e) {
         annualSalary: annualSalaryVar.value
     }
 
-    if (validateResponses(newEmployee.firstName, newEmployee.lastName, newEmployee.idNumber, newEmployee.jobTitle, newEmployee.annualSalary) === 'Run function') {
+    let test = validateResponses(newEmployee.firstName, newEmployee.lastName, newEmployee.idNumber, newEmployee.jobTitle, newEmployee.annualSalary);
 
-        
+    if (test) {
+
+
         // Push newEmployee object into employees array in case there is future utility for having an array of employees
         employees.push(newEmployee);
-        
+
         // Add form info to the table on the DOM
         tableBody.innerHTML += `
         <tr>
@@ -68,23 +70,21 @@ function submitInfo(e) {
         <td><button class="remove-button" onclick="removeEmployee(event)">Remove employee</button></td>
         </tr>
         `
-        
+
         // Push the submitted salary and ID numbers into the respective arrays
         salaries.push(Number(newEmployee.annualSalary));
         idNums.push(Number(newEmployee.idNumber));
-        
+
         // Reset input field values to empty
         document.querySelector(`#first-name`).value = '';
         document.querySelector(`#last-name`).value = '';
         document.querySelector(`#id-number`).value = '';
         document.querySelector(`#job-title`).value = '';
         document.querySelector(`#annual-salary`).value = '';
-        
+
         // Update the monthly salary counter on the DOM
         sumSalaries();
-    
-    } else {
-        validateResponses(newEmployee.firstName, newEmployee.lastName, newEmployee.idNumber, newEmployee.jobTitle, newEmployee.annualSalary)
+
     }
 
 }
@@ -215,26 +215,36 @@ function redBackground() {
 
 
 function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salaryInput) {
-   
+
     let alphaRegEx = /^[a-zA-Z' ]+$/;
     let numericRegEx = /^[0-9.]+$/;
     let titleRegEx = /^[a-zA-Z0-9.' ]+$/;
+
+    console.log('function called');
+    console.log(idNums);
+    console.log(idNums.indexOf(idNumInput));
+    console.log(idNums.includes(Number(idNumInput)));
 
     if (!alphaRegEx.test(fNameInput)) {
         alert(`Please enter only alpha characters in the first name box.`);
         return false;
     } else if (!alphaRegEx.test(lNameInput)) {
-        return alert(`Please enter only alpha characters in the last name box.`);
+        alert(`Please enter only alpha characters in the last name box.`);
+        return false;
+    } else if (idNums.includes(idNumInput)) {
+        alert(`Please enter an ID number that is not already assigned to another employee.`);
+        return false;
     } else if (!numericRegEx.test(idNumInput)) {
-        return alert(`Please enter a 7-digit id number in the ID Number box.`);
+        alert(`Please enter a 7-digit id number in the ID Number box.`);
+        return false;
     } else if (!titleRegEx.test(titleInput)) {
-        return alert(`Please enter only alpha characters in the job title box.`);
+        alert(`Please enter only alpha characters in the job title box.`);
+        return false;
     } else if (!numericRegEx.test(salaryInput)) {
-        return alert(`Please only enter numeric characters in the salary box.`);
+        alert(`Please only enter numeric characters in the salary box.`);
+        return false;
     } else {
-        return 'Run function';
+        return true;
     }
 
 }
-
-validateResponses(`Noah`, 'Greensweig', 1234567, 'Noah Greensweig', '1234564');
