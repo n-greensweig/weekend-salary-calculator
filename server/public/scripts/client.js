@@ -51,9 +51,9 @@ function submitInfo(e) {
         annualSalary: annualSalaryVar.value
     }
 
-    let test = validateResponses(newEmployee.firstName, newEmployee.lastName, newEmployee.idNumber, newEmployee.jobTitle, newEmployee.annualSalary);
+    let validateEmployee = validateResponses(newEmployee.firstName, newEmployee.lastName, newEmployee.idNumber, newEmployee.jobTitle, newEmployee.annualSalary);
 
-    if (test) {
+    if (validateEmployee) {
 
 
         // Push newEmployee object into employees array in case there is future utility for having an array of employees
@@ -217,13 +217,11 @@ function redBackground() {
 function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salaryInput) {
 
     let alphaRegEx = /^[a-zA-Z' ]+$/;
-    let numericRegEx = /^[0-9.]+$/;
+    let idNumRegEx = /^[0-9.]{7}$/;
     let titleRegEx = /^[a-zA-Z0-9.' ]+$/;
+    let numericRegEx = /^[0-9.]+$/;
 
-    console.log('function called');
-    console.log(idNums);
-    console.log(idNums.indexOf(idNumInput));
-    console.log(idNums.includes(Number(idNumInput)));
+    console.log(idNums.indexOf(Number(idNumInput)));
 
     if (!alphaRegEx.test(fNameInput)) {
         alert(`Please enter only alpha characters in the first name box.`);
@@ -231,10 +229,10 @@ function validateResponses(fNameInput, lNameInput, idNumInput, titleInput, salar
     } else if (!alphaRegEx.test(lNameInput)) {
         alert(`Please enter only alpha characters in the last name box.`);
         return false;
-    } else if (idNums.includes(idNumInput)) {
+    } else if (idNums.indexOf(Number(idNumInput)) !== -1) {
         alert(`Please enter an ID number that is not already assigned to another employee.`);
         return false;
-    } else if (!numericRegEx.test(idNumInput)) {
+    } else if (!idNumRegEx.test(idNumInput)) {
         alert(`Please enter a 7-digit id number in the ID Number box.`);
         return false;
     } else if (!titleRegEx.test(titleInput)) {
