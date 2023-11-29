@@ -1,13 +1,14 @@
 # Weekend Salary Calculator
 
-## Description
-The Weekend Salary Calculator is a web application designed to help businesses manage employee data and calculate their total monthly salaries. It provides a user-friendly interface for adding, viewing, and removing employee details, as well as for calculating the aggregate monthly salary expenses.
-
 ## Table of Contents
+- Description(#Description)
 - [Installation](#Installation)
 - [Usage](#Usage)
 - [Built With](#Built-With)
 - [Contributing](#Contributing)
+
+## Description
+The Weekend Salary Calculator is a web application designed to help businesses manage employee data and calculate their total monthly salaries. It provides a user-friendly interface for adding, viewing, and removing employee details, as well as for calculating the aggregate monthly salary expenses.
 
 ## Installation
 1. Clone the repo:
