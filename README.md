@@ -1,65 +1,41 @@
-# Salary Calculator
+# Weekend Salary Calculator
 
 ## Description
+The Weekend Salary Calculator is a web application designed to help businesses manage employee data and calculate their total monthly salaries. It provides a user-friendly interface for adding, viewing, and removing employee details, as well as for calculating the aggregate monthly salary expenses.
 
-Your project description goes here. What problem did you solve? How did you solve it?
+## Table of Contents
+Installation
+Usage
+Built With
+Contributing
+Acknowledgments
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+## Installation
+1. Clone the repo:
+```git clone https://github.com/n-greensweig/weekend-salary-calculator.git```
+2. Install NPM packages:
+```npm install```
+3. Start the server:
+```npm start```
 
-### Part 1 - Page Heading
+## Usage
+To use the Weekend Salary Calculator:
 
-Add a heading to the page
+Enter employee details in the provided form, including first name, last name, ID number, job title, and annual salary.
+View the employee data table to see all entered employees.
+The total monthly salary is automatically calculated and displayed based on the annual salaries entered.
+Employees can be removed, and the total monthly salary will be updated accordingly.
 
-- [ ] Add a heading with a descriptive title to the DOM
-- [ ] Center the text and give the text a margin of 20px(?) on top and bottom
+## Built With
+* HTML/CSS - For the front-end design.
+* JavaScript - For client-side scripting.
+* Node.js - For the back-end server.
 
-### Part 2 - HTML Form
+## Contributing
+Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-Add employee information in using div and form elements below the heading
-
-- [ ] Create an new-employee-info div
-- [ ] Add 'Add Employee' or 'Submit New Employee Information' text within the new-employee-info div
-- [ ] Create an HTML form within the new-employee-info div with onSubmit functionality
-- [ ] Add five input fields, with type="text" and appropriate margin between them, for the user to add the employee's first name, last name, ID number, job title, and annual salary.
-- [ ] Add relevant placeholder text to each text input box
-- [ ] Add a 'Submit' button to submit the form info and clear the input text
-
-### Part 3 - Employee Data Table
-
-- [ ] Below the form, create an employee-data div entitled 'Employee Data'
-- [ ] Nest an HTML table within the employee-data div
-- [ ] Give the table a list of headings as follows: First Name, Last Name, ID, Title, Annual Salary, Remove Employee?
-
-### Part 4 - Total Monthly Salary
-- [ ] Below the employee-data div, add a monthly-salary div with the text `Total Monthly Salary: ${monthlySalary}`
-
-### Part 5 - JavaScript
-
-- [ ] Declare variables for each input value from the HTML form
-- [ ] Create a submitInfo(e) function to append table rows (with class names matching hyphenated versions of their headings) to the HTML table when the form is submitted, including a 'Delete' button for each employee that fires an onClick="removeEmployee(e)" function
-- [ ] Create a removeEmployee(e) function that prompts the user to ask if they are sure they want to delete firstName's data, then deletes the parent element(?) of the delete button that the user clicked
-- [ ] Query select HTML table data in the "annual-salary-data" class, and run a for loop(?) to add each of these numbers up and divide by 12, appending to the monthly-salary div when this calculation is complete
-- [ ] Edit the removeEmployee(e) function to remove an employee's monthly salary from the monthly-salary total when an employee is deleted from the list
-
-### Part 6 - CSS & Styling
-
-- [ ] Add a background color to the heading of the page
-- [ ] Add only a bottom border to the input fields
-- [ ] Create alternating row colors of white and lightgrey within the HTML table
-- [ ] Add a HTML favicon and title element to the page
-- [ ] Add a CSS rule to give the total-monthly div a red background color when the total monthly salary exceeds $20k
-
-
-### Part 7 - Ad Hoc Improvements
-
-- [ ] Resize the submit button to match the input boxes
-- [ ] Restyle the remove employee buttons
-- [ ] Clean up the red background color for when monthly salary exceeds $20k
-- [ ] Incorporate an employees object
-- [ ] Add alerts for each input field to confirm removals and RegEx validation
-- [ ] Clean up salaries.splice() in removeEmployee function
-- [ ] Format numbers as currency with dollar signs and commas
-- [ ] Adjust for responsive design
-- [ ] Try different font-families
-- [ ] Comment code
-- [ ] Give the user an option to confirm they want to delete an employee before doing so
+1. Fork the Project
+2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
+3. Commit your Changes (git commit -m 'Add some AmazingFeature')
+4. Push to the Branch (git push origin feature/AmazingFeature)
+5. Open a Pull Request
