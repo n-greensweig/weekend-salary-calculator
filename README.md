@@ -1,7 +1,7 @@
 # Weekend Salary Calculator
 
 ## Table of Contents
-- Description(#Description)
+- [Description](#Description)
 - [Installation](#Installation)
 - [Usage](#Usage)
 - [Built With](#Built-With)
