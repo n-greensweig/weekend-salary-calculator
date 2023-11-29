@@ -5,10 +5,9 @@ The Weekend Salary Calculator is a web application designed to help businesses m
 
 ## Table of Contents
 [Installation](#Installation)
-Usage
-Built With
-Contributing
-Acknowledgments
+[Usage](#Usage)
+[Built With](#Built With)
+[Contributing](#Contributing)
 
 ## Installation
 1. Clone the repo:
