@@ -4,7 +4,7 @@
 The Weekend Salary Calculator is a web application designed to help businesses manage employee data and calculate their total monthly salaries. It provides a user-friendly interface for adding, viewing, and removing employee details, as well as for calculating the aggregate monthly salary expenses.
 
 ## Table of Contents
-Installation
+[Installation](#Installation)
 Usage
 Built With
 Contributing
@@ -29,7 +29,7 @@ Employees can be removed, and the total monthly salary will be updated according
 ## Built With
 * HTML/CSS - For the front-end design.
 * JavaScript - For client-side scripting.
-* Node.js - For the back-end server.
+* Express and Node.js - For the back-end server.
 
 ## Contributing
 Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
